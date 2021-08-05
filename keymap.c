@@ -1,5 +1,6 @@
 
 #include QMK_KEYBOARD_H
+#include "keymap_spanish.h"
 
 enum layers {
   _QWERTY,
@@ -8,8 +9,9 @@ enum layers {
   _SIMBOLOS,
   _MOUSE,
   _NUMERICO,
-  _ADJUST
+  _ADJUST,
 };
+
 enum keycodes {
     QWERTY = SAFE_RANGE,
     COLEMA,
@@ -18,8 +20,15 @@ enum keycodes {
     MOUSE,
     NUMERIC,
     ADJUST,
-    TD_PC, TD_ALT,TD_MAY
+    TDPC,
+    TDALT,
+    TDMAY,
+};
 
+enum {
+    TD_PC = 0,
+    TD_ALT,
+    TD_MAY,
 };
 
 #define QWERTY MO(_QWERTY)
@@ -28,10 +37,6 @@ enum keycodes {
 #define SIMBO MO(_SIMBOLOS)
 #define MOUSE MO(_MOUSE)
 #define NUMERIC MO(_NUMERICO)
-#define TDPC TD(TD_PC)
-#define TDALT TD(TD_ALT)
-#define TDMAY TD(TD_MAY)
-
 
 // COLEMAK - home row mods
 #define HOMEQ_A LGUI_T(KC_A)
@@ -52,6 +57,22 @@ enum keycodes {
 #define HOME_L LCTL_T(KC_L)
 #define HOME_J RSFT_T(KC_J)
 
+#define REDO LCTL(KC_Y)
+#define UNDO LCTL(KC_Z)
+#define CUT LCTL(KC_X)
+#define COPY LCTL(KC_C)
+#define PASTE LCTL(KC_V)
+#define M_CF4 LCTL(KC_F4)
+#define M_WE G(KC_E)
+
+#define ES_LESS_MAC KC_GRAVE
+#define ES_GRTR_MAC LSFT(KC_GRAVE)
+#define ES_BSLS_MAC ALGR(KC_6)
+#define NO_PIPE_ALT KC_GRAVE
+#define NO_BSLS_ALT KC_EQUAL
+#define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
+#define BP_NDSH_MAC ALGR(KC_8)
+
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_PC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, S(KC_COMM)),
@@ -59,17 +80,21 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_MAY] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
 };
 
+#define TDPC TD(TD_PC)
+#define TDALT TD(TD_ALT)
+#define TDMAY TD(TD_MAY)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
+ * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | BLTog| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * | BLTog| Ctrl | NUME  | FN  | SIMB |    Space    | SIMB |  FN  | NUMER | ALT |  GUI |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_mit(
@@ -99,41 +124,58 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* SIMBOLOS
  * ,-----------------------------------------------------------------------------------.
- * |      |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |      |
+ * |      |   =  │   *  │   +  │   @  │   \  |   €  │   $  │   [  │  ]   │  º   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |      |
+ * |      |   "  │   '  │   /  │   &  │   |  |   ¡  │   !  │   (  │  )   │      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
+ * |      |  <   │  >   │   %  │   -  │   #  |   ¿  │   ?  │   {  │  }   │      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
-[_LOWER] = LAYOUT_planck_mit(
-    _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, _______,
-    _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, _______,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______,
+[_SIMBOLOS] = LAYOUT_planck_mit(
+    _______, ES_EQL, ES_ASTR, ES_PLUS, ES_AT, ES_BSLS, ES_EURO, S(KC_4), ES_LBRC, ES_RBRC, ES_MORD, KC_DEL,
+    _______, S(KC_2), ES_QUOT, ES_SLSH, ES_AMPR, ES_PIPE, ES_IEXL, ES_EXLM, ES_LPRN, ES_RPRN, _______, _______,
+    _______, ES_LABK, ES_RABK, S(KC_5), KC_SLSH, ES_HASH, ES_IQUE, ES_QUES, ES_LCBR, ES_RCBR, _______,  _______,
     _______, _______, _______, _______, _______, _______, _______,    _______,    _______, _______, _______
 ),
 
-/* Raise
+/* Función
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+ * |      |      |      |  GE  │  CF4 |      |      |      |   ↑  |      |      | F12  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+ * |      | REDO │ UNDO │ C C  │ C V  │  C C | HOME │   ←  │   ↓  │   →  │  END |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
-[_RAISE] = LAYOUT_planck_mit(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
-    _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+[_FN] = LAYOUT_planck_mit(
+    _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
+    _______,  XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX,   XXXXXXX, XXXXXXX, KC_UP, XXXXXXX, XXXXXXX,  KC_F12,
+    _______,  REDO, UNDO, CUT, PASTE, COPY,  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+),
+/* Numerica
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |   7  |   8  |   9  |   -  | HOME |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |   4  |   5  |   6  |   +  |  END |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |   1  |   2  |   3  |   -  | PGUP |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |   0  |   .  |  ENT |   =  | PGDOW|
+ * `-----------------------------------------------------------------------------------'
+ */
+[_NUMERICO] = LAYOUT_planck_mit(
+    _______, _______, _______, _______, _______, _______, _______, KC_7, KC_8, KC_9, KC_KP_PLUS,  KC_HOME,
+    _______, _______, _______, _______, _______, _______, _______, KC_4, KC_5, KC_6, KC_KP_MINUS, KC_END,
+    _______, _______, _______, _______, _______, _______, _______, KC_1, KC_2, KC_3, KC_KP_EQUAL, KC_PGUP,
+    _______, _______, _______, _______, _______, _______, _______, KC_0, KC_DOT, KC_ENT, KC_PGDN
 ),
 
-/* Adjust (Lower + Raise)
+/* Adjust (Simbolos + FN)
  *                      v------------------------RGB CONTROL--------------------v
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
@@ -167,7 +209,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-        case COLEMAK:
+        case COLEMA:
             if (record->event.pressed) {
                 rgblight_mode(5);
                 set_single_persistent_default_layer(_COLEMAK);
