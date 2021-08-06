@@ -31,12 +31,12 @@ enum {
     TD_MAY,
 };
 
-#define QWERTY MO(_QWERTY)
-#define COLEMA MO(_COLEMAK)
-#define FN MO(_FN)
-#define SIMBO MO(_SIMBOLOS)
-#define MOUSE MO(_MOUSE)
-#define NUMERIC MO(_NUMERICO)
+#define QWERTY TT(_QWERTY)
+#define COLEMA TT(_COLEMAK)
+#define FN TT(_FN)
+#define SIMBO TT(_SIMBOLOS)
+#define MOUSE TT(_MOUSE)
+#define NUMERIC TT(_NUMERICO)
 
 // COLEMAK - home row mods
 #define HOMEQ_A LGUI_T(KC_A)
@@ -73,6 +73,97 @@ enum {
 #define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
 #define BP_NDSH_MAC ALGR(KC_8)
 
+//layer led colors
+
+void rgb_matrix_indicators_user(void) {
+    if(IS_LAYER_ON(_QWERTY)) {
+        rgb_matrix_set_color(11, 0, 40, 50);
+    }
+
+    if(IS_LAYER_ON(_COLEMAK)) {
+        rgb_matrix_set_color(11, 50, 10, 20);
+    }
+
+    //layer indicators
+
+    if(IS_LAYER_ON(_NUMERICO)) {
+        rgb_matrix_set_color(38, 0, 40, 50);
+
+        rgb_matrix_set_color(7, 0, 40, 50);
+        rgb_matrix_set_color(8, 0, 40, 50);
+        rgb_matrix_set_color(9, 0, 40, 50);
+        rgb_matrix_set_color(10, 0, 40, 50);
+
+        rgb_matrix_set_color(19, 0, 40, 50);
+        rgb_matrix_set_color(20, 0, 40, 50);
+        rgb_matrix_set_color(21, 0, 40, 50);
+        rgb_matrix_set_color(22, 0, 40, 50);
+
+        rgb_matrix_set_color(31, 0, 40, 50);
+        rgb_matrix_set_color(32, 0, 40, 50);
+        rgb_matrix_set_color(33, 0, 40, 50);
+        rgb_matrix_set_color(34, 0, 40, 50);
+
+        rgb_matrix_set_color(43, 0, 40, 50);
+        rgb_matrix_set_color(42, 0, 40, 50);
+        rgb_matrix_set_color(44, 0, 40, 50);
+        rgb_matrix_set_color(45, 0, 40, 50);
+
+        rgb_matrix_set_color(52, 0, 40, 50);
+        rgb_matrix_set_color(53, 0, 40, 50);
+        rgb_matrix_set_color(54, 0, 40, 50);
+        rgb_matrix_set_color(55, 0, 40, 50);
+    }
+
+    if(IS_LAYER_ON(_ADJUST)) {
+        rgb_matrix_set_color(39, 50, 10, 20);
+        rgb_matrix_set_color(19, 50, 10, 20);
+        rgb_matrix_set_color(22, 50, 10, 20);
+        rgb_matrix_set_color(42, 50, 10, 20);
+    }
+
+    if(IS_LAYER_ON(_FN)) {
+        rgb_matrix_set_color(39, 50, 0, 0);
+
+        rgb_matrix_set_color(20, 50, 0, 0);
+        rgb_matrix_set_color(31, 50, 0, 0);
+        rgb_matrix_set_color(32, 50, 0, 0);
+        rgb_matrix_set_color(33, 50, 0, 0);
+
+        rgb_matrix_set_color(42, 50, 0, 0);
+        rgb_matrix_set_color(43, 50, 0, 0);
+        rgb_matrix_set_color(44, 50, 0, 0);
+    }
+
+    if(IS_LAYER_ON(_SIMBOLOS)) {
+        rgb_matrix_set_color_all(10, 0, 50);
+
+        // rgb_matrix_set_color(42, 10, 0, 50);
+
+        // rgb_matrix_set_color(2, 10, 0, 50);
+        // rgb_matrix_set_color(3, 10, 0, 50);
+        // rgb_matrix_set_color(4, 10, 0, 50);
+
+        // rgb_matrix_set_color(14, 10, 0, 50);
+        // rgb_matrix_set_color(15, 10, 0, 50);
+        // rgb_matrix_set_color(16, 10, 0, 50);
+
+        // rgb_matrix_set_color(26, 10, 0, 50);
+        // rgb_matrix_set_color(27, 10, 0, 50);
+        // rgb_matrix_set_color(28, 10, 0, 50);
+
+        // rgb_matrix_set_color(38, 10, 0, 50);
+        // rgb_matrix_set_color(39, 10, 0, 50);
+        // rgb_matrix_set_color(40, 10, 0, 50);
+    }
+
+    //capslock leds
+
+    if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+        rgb_matrix_set_color_all(50, 15.6, 0);
+    }
+
+}
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_PC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, S(KC_COMM)),
@@ -100,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_planck_mit(
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    TDMAY, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TD(TD_PC), KC_DOT,  KC_SLSH, KC_ENT ,
+    TDMAY, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TD(TD_PC), KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
     KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBO,   FN, NUMERIC, KC_RALT,   KC_LGUI
 ),
 
@@ -112,13 +203,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | BLTog| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * | BLTog| Ctrl | NUME  | FN  | SIMB |    Space    | SIMB |  FN  | NUMER | ALT |  GUI |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_planck_mit(
     KC_ESC,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,    KC_BSPC,
     KC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
     KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBO,   FN, NUMERIC, KC_RALT,   KC_LGUI
 ),
 
@@ -189,8 +280,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_planck_mit(
     _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, DF(_COLEMAK),
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, DF(_QWERTY),
+    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, QWERTY,
+    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, COLEMA,
     RGB_TOG, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
 )
 
@@ -200,40 +291,24 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _SIMBOLOS, _FN, _ADJUST);
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QWERTY:
-            if (record->event.pressed) {
-                rgblight_mode(5);
-                set_single_persistent_default_layer(_QWERTY);
-            }
-            return false;
-            break;
-        case COLEMA:
-            if (record->event.pressed) {
-                rgblight_mode(5);
-                set_single_persistent_default_layer(_COLEMAK);
-            }
-            return false;
-            break;
-        // case GAME:
-        //     if (record->event.pressed) {
-        //         rgblight_mode(RGBLIGHT_MODE_STATIC_GRADIENT);
-        //         set_single_persistent_default_layer(_GAME);
-        //     }
-        //     return false;
-        //     break;
-        // case SHORTCUTS:
-        //     if (record->event.pressed) {
-        //         rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
-        //         check_scenes();
-        //         check_toggles();
-        //         set_single_persistent_default_layer(_SHORTCUTS);
-        //     }
-        //     return false;
-        //     break;
-    }
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case QWERTY:
+//             if (record->event.pressed) {
+//                 rgblight_mode(5);
+//                 set_single_persistent_default_layer(_QWERTY);
+//             }
+//             return false;
+//             break;
+//         case COLEMA:
+//             if (record->event.pressed) {
+//                 rgblight_mode(5);
+//                 set_single_persistent_default_layer(_COLEMAK);
+//             }
+//             return false;
+//             break;
+//     }
 
-    return true;
-}
+//     return true;
+// }
 

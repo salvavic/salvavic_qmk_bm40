@@ -8,6 +8,11 @@
 
 ## Comandos para añadir al repo e inicializar
 `git submodule add https://github.com/salvavic/salvavic_qmk_bm40.git keyboards/bm40hsrgb/keymaps/salvavic`
+
 `git submodule init`
+
 `git submodule update`
+
 `qmk setup`
+
+## Keymap
