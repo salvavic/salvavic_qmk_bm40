@@ -31,8 +31,8 @@ enum {
     TD_MAY,
 };
 
-#define QWERTY TT(_QWERTY)
-#define COLEMA TT(_COLEMAK)
+#define QWERTY DF(_QWERTY)
+#define COLEMA DF(_COLEMAK)
 #define FN TT(_FN)
 #define SIMBO TT(_SIMBOLOS)
 #define MOUSE TT(_MOUSE)
@@ -81,7 +81,7 @@ void rgb_matrix_indicators_user(void) {
     }
 
     if(IS_LAYER_ON(_COLEMAK)) {
-        rgb_matrix_set_color(11, 50, 10, 20);
+        rgb_matrix_set_color_all(50, 10, 20);
     }
 
     //layer indicators
@@ -137,24 +137,6 @@ void rgb_matrix_indicators_user(void) {
 
     if(IS_LAYER_ON(_SIMBOLOS)) {
         rgb_matrix_set_color_all(10, 0, 50);
-
-        // rgb_matrix_set_color(42, 10, 0, 50);
-
-        // rgb_matrix_set_color(2, 10, 0, 50);
-        // rgb_matrix_set_color(3, 10, 0, 50);
-        // rgb_matrix_set_color(4, 10, 0, 50);
-
-        // rgb_matrix_set_color(14, 10, 0, 50);
-        // rgb_matrix_set_color(15, 10, 0, 50);
-        // rgb_matrix_set_color(16, 10, 0, 50);
-
-        // rgb_matrix_set_color(26, 10, 0, 50);
-        // rgb_matrix_set_color(27, 10, 0, 50);
-        // rgb_matrix_set_color(28, 10, 0, 50);
-
-        // rgb_matrix_set_color(38, 10, 0, 50);
-        // rgb_matrix_set_color(39, 10, 0, 50);
-        // rgb_matrix_set_color(40, 10, 0, 50);
     }
 
     //capslock leds
@@ -245,8 +227,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FN] = LAYOUT_planck_mit(
     _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
     _______,  XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX,   XXXXXXX, XXXXXXX, KC_UP, XXXXXXX, XXXXXXX,  KC_F12,
-    _______,  REDO, UNDO, CUT, PASTE, COPY,  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    _______,  REDO, UNDO, CUT, PASTE, COPY,  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, COLEMA,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, QWERTY
 ),
 /* Numerica
  * ,-----------------------------------------------------------------------------------.
@@ -291,24 +273,24 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _SIMBOLOS, _FN, _ADJUST);
 }
 
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     switch (keycode) {
-//         case QWERTY:
-//             if (record->event.pressed) {
-//                 rgblight_mode(5);
-//                 set_single_persistent_default_layer(_QWERTY);
-//             }
-//             return false;
-//             break;
-//         case COLEMA:
-//             if (record->event.pressed) {
-//                 rgblight_mode(5);
-//                 set_single_persistent_default_layer(_COLEMAK);
-//             }
-//             return false;
-//             break;
-//     }
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case QWERTY:
+            if (record->event.pressed) {
+                rgb_matrix_set_color_all(0, 10, 20);
+                set_single_persistent_default_layer(_QWERTY);
+            }
+            return false;
+            break;
+        case COLEMA:
+            if (record->event.pressed) {
+                rgb_matrix_set_color_all(50, 10, 20);
+                set_single_persistent_default_layer(_COLEMAK);
+            }
+            return false;
+            break;
+    }
 
-//     return true;
-// }
+    return true;
+}
 
