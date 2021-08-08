@@ -172,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_QWERTY] = LAYOUT_planck_mit(
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    KC_TAB,  HOME_A,    HOME_S,    HOME_D,    HOME_F,    KC_G,    KC_H,    HOME_J,    HOME_K,    HOME_L,    HOME_NT, KC_QUOT,
     TDMAY, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TD(TD_PC), KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
     KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBO,   FN, NUMERIC, KC_RALT,   KC_LGUI
 ),
@@ -217,16 +217,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |  GE  │  CF4 |      |      |      |   ↑  |      |      | F12  |
+ * |      |      |      |  GE  │  CF4 |      |      |      |   ↑  | PGUP |PGDOWN| F12  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | REDO │ UNDO │ C C  │ C V  │  C C | HOME │   ←  │   ↓  │   →  │  END |      |
+ * |      | REDO │ UNDO │ C C  │ C V  │  C C | HOME │   ←  │   ↓  │   →  │  END |COLEMA|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |      |      |      |
+ * |      |      |      |      |      |             |      |      |      |      |QWERTY|
  * `-----------------------------------------------------------------------------------'
  */
 [_FN] = LAYOUT_planck_mit(
     _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
-    _______,  XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX,   XXXXXXX, XXXXXXX, KC_UP, XXXXXXX, XXXXXXX,  KC_F12,
+    _______,  XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX,   XXXXXXX, XXXXXXX, KC_UP, KC_PGDN, KC_PGUP,  KC_F12,
     _______,  REDO, UNDO, CUT, PASTE, COPY,  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, COLEMA,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, QWERTY
 ),
@@ -294,3 +294,119 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+            return true;
+        case LALT_T(KC_S):
+            return true;
+        case LCTL_T(KC_D):
+            return true;
+        case LSFT_T(KC_F):
+            return true;
+        case RSFT_T(KC_J):
+            return true;
+        case RCTL_T(KC_K):
+            return true;
+        case RALT_T(KC_L):
+            return true;
+        case LGUI_T(KC_L):
+            return true;
+
+        case LALT_T(KC_R):
+            return true;
+        case LSFT_T(KC_S):
+            return true;
+        case LCTL_T(KC_T):
+            return true;
+        case RGUI_T(KC_O):
+            return true;
+        case RALT_T(KC_I):
+            return true;
+        case RSFT_T(KC_N):
+            return true;
+        case RCTL_T(KC_E):
+            return true;
+
+        default:
+            return false;
+    }
+}
+
+bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+            return true;
+        case LALT_T(KC_S):
+            return true;
+        case LCTL_T(KC_D):
+            return true;
+        case LSFT_T(KC_F):
+            return true;
+        case RSFT_T(KC_J):
+            return true;
+        case RCTL_T(KC_K):
+            return true;
+        case RALT_T(KC_L):
+            return true;
+        case LGUI_T(KC_L):
+            return true;
+
+        case LALT_T(KC_R):
+            return true;
+        case LSFT_T(KC_S):
+            return true;
+        case LCTL_T(KC_T):
+            return true;
+        case RGUI_T(KC_O):
+            return true;
+        case RALT_T(KC_I):
+            return true;
+        case RSFT_T(KC_N):
+            return true;
+        case RCTL_T(KC_E):
+            return true;
+
+        default:
+            return false;
+    }
+}
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LALT_T(KC_S):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LCTL_T(KC_D):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LSFT_T(KC_F):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RSFT_T(KC_J):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RCTL_T(KC_K):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RALT_T(KC_L):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LGUI_T(KC_L):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+
+        case LALT_T(KC_R):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LSFT_T(KC_S):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case LCTL_T(KC_T):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RGUI_T(KC_O):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RALT_T(KC_I):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RSFT_T(KC_N):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+        case RCTL_T(KC_E):
+            return TAPPING_TERM + LONG_TAPPING_TERM;
+
+        default:
+            return TAPPING_TERM;
+    }
+}
