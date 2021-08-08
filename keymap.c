@@ -372,6 +372,47 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+            return true;
+        case LALT_T(KC_S):
+            return true;
+        case LCTL_T(KC_D):
+            return true;
+        case LSFT_T(KC_F):
+            return true;
+        case RSFT_T(KC_J):
+            return true;
+        case RCTL_T(KC_K):
+            return true;
+        case RALT_T(KC_L):
+            return true;
+        case LGUI_T(KC_L):
+            return true;
+
+        case LALT_T(KC_R):
+            return true;
+        case LSFT_T(KC_S):
+            return true;
+        case LCTL_T(KC_T):
+            return true;
+        case RGUI_T(KC_O):
+            return true;
+        case RALT_T(KC_I):
+            return true;
+        case RSFT_T(KC_N):
+            return true;
+        case RCTL_T(KC_E):
+            return true;
+
+        default:
+            return false;
+    }
+}
+
+
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LGUI_T(KC_A):
@@ -410,3 +451,4 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
