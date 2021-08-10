@@ -53,8 +53,8 @@ enum {
 #define HOME_D LCTL_T(KC_D)
 #define HOME_F LSFT_T(KC_F)
 #define HOME_NT LGUI_T(ES_NTIL)
-#define HOME_K LALT_T(KC_K)
-#define HOME_L LCTL_T(KC_L)
+#define HOME_K RCTL_T(KC_K)
+#define HOME_L RALT_T(KC_L)
 #define HOME_J RSFT_T(KC_J)
 
 #define REDO LCTL(KC_Y)
@@ -215,9 +215,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Función
  * ,-----------------------------------------------------------------------------------.
- * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |
+ * | CatP |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |  GE  │  CF4 |      |      |      |   ↑  | PGUP |PGDOWN| F12  |
+ * |      |      |      |      │      | CF4  |      |      |   ↑  | PGUP |PGDOWN| F12  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | REDO │ UNDO │ C C  │ C V  │  C C | HOME │   ←  │   ↓  │   →  │  END |COLEMA|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -225,10 +225,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_FN] = LAYOUT_planck_mit(
-    _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
-    _______,  XXXXXXX, XXXXXXX, M_WE , M_CF4, XXXXXXX,   XXXXXXX, XXXXXXX, KC_UP, KC_PGDN, KC_PGUP,  KC_F12,
-    _______,  REDO, UNDO, CUT, PASTE, COPY,  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, COLEMA,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, QWERTY
+    SGUI(KC_S),  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
+    _______,  _______, _______, _______ , _______, M_CF4,   XXXXXXX, XXXXXXX, KC_UP, KC_PGDN, KC_PGUP,  KC_F12,
+    _______,  REDO, UNDO, CUT, PASTE, COPY,  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, XXXXXXX,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 /* Numerica
  * ,-----------------------------------------------------------------------------------.
