@@ -374,7 +374,6 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-    switch (keycode) {
         case LGUI_T(KC_A):
             return true;
         case LALT_T(KC_S):
