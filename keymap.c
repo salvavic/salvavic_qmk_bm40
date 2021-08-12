@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | BLTog| Ctrl | NUME  | FN  | SIMB |    Space    | SIMB |  FN  | NUMER | ALT |  GUI |
+ * | Ctrl | AltI | NUME  | FN  | SIMB |    Space    | SIMB |  FN  | NUMER | ALT |  GUI |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_planck_mit(
@@ -310,7 +310,7 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
             return true;
         case RALT_T(KC_L):
             return true;
-        case LGUI_T(KC_L):
+        case LGUI_T(KC_SCLN):
             return true;
 
         case LALT_T(KC_R):
@@ -349,7 +349,7 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
             return true;
         case RALT_T(KC_L):
             return true;
-        case LGUI_T(KC_L):
+        case LGUI_T(KC_SCLN):
             return true;
 
         case LALT_T(KC_R):
@@ -388,7 +388,7 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
             return true;
         case RALT_T(KC_L):
             return true;
-        case LGUI_T(KC_L):
+        case LGUI_T(KC_SCLN):
             return true;
 
         case LALT_T(KC_R):
@@ -428,7 +428,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + LONG_TAPPING_TERM;
         case RALT_T(KC_L):
             return TAPPING_TERM + LONG_TAPPING_TERM;
-        case LGUI_T(KC_L):
+        case LGUI_T(KC_SCLN):
             return TAPPING_TERM + LONG_TAPPING_TERM;
 
         case LALT_T(KC_R):
