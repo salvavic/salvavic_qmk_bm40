@@ -16,7 +16,9 @@ enum keycodes {
     QWERTY = SAFE_RANGE,
     COLEMA,
     FN,
+    FNDEL,
     SIMBO,
+    SIMBOENT,
     MOUSE,
     NUMERIC,
     ADJUST,
@@ -34,7 +36,9 @@ enum {
 #define QWERTY DF(_QWERTY)
 #define COLEMA DF(_COLEMAK)
 #define FN TT(_FN)
+#define FNDEL LT(_FN, KC_DEL)
 #define SIMBO TT(_SIMBOLOS)
+#define SIMBOENT LT(_SIMBOLOS, KC_ENTER)
 #define MOUSE TT(_MOUSE)
 #define NUMERIC TT(_NUMERICO)
 
@@ -174,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_TAB,  HOME_A,    HOME_S,    HOME_D,    HOME_F,    KC_G,    KC_H,    HOME_J,    HOME_K,    HOME_L,    HOME_NT, KC_QUOT,
     TDMAY, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    TD(TD_PC), KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
-    KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBO,   FN, NUMERIC, KC_RALT,   KC_LGUI
+    KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBOENT,   FNDEL, NUMERIC, KC_RALT,   KC_LGUI
 ),
 
 /* Colemaks
@@ -192,24 +196,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,    KC_BSPC,
     KC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
-    KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBO,   FN, NUMERIC, KC_RALT,   KC_LGUI
+    KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBO,   FNDEL, NUMERIC, KC_RALT,   KC_LGUI
 ),
 
 /* SIMBOLOS
  * ,-----------------------------------------------------------------------------------.
  * |      |   =  │   *  │   +  │   @  │   \  |   €  │   $  │   [  │  ]   │  º   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |   "  │   '  │   /  │   &  │   |  |   ¡  │   !  │   (  │  )   │      |      |
+ * |      |   "  │   '  │   /  │   &  │   |  |   ¡  │   !  │   (  │  )   │  '   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  <   │  >   │   %  │   -  │   #  |   ¿  │   ?  │   {  │  }   │      |      |
+ * |      |  <   │  >   │   %  │   -  │   #  |   ¿  │   ?  │   {  │  }   │  `   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_SIMBOLOS] = LAYOUT_planck_mit(
     _______, ES_EQL, ES_ASTR, ES_PLUS, ES_AT, ES_BSLS, ES_EURO, S(KC_4), ES_LBRC, ES_RBRC, ES_MORD, KC_DEL,
-    _______, S(KC_2), ES_QUOT, ES_SLSH, ES_AMPR, ES_PIPE, ES_IEXL, ES_EXLM, ES_LPRN, ES_RPRN, _______, _______,
-    _______, ES_LABK, ES_RABK, S(KC_5), KC_SLSH, ES_HASH, ES_IQUE, ES_QUES, ES_LCBR, ES_RCBR, _______,  _______,
+    _______, S(KC_2), ES_QUOT, ES_SLSH, ES_AMPR, ES_PIPE, ES_IEXL, ES_EXLM, ES_LPRN, ES_RPRN, KC_MINS, _______,
+    _______, ES_LABK, ES_RABK, S(KC_5), KC_SLSH, ES_HASH, ES_IQUE, ES_QUES, ES_LCBR, ES_RCBR, KC_LBRC,  _______,
     _______, _______, _______, _______, _______, _______, _______,    _______,    _______, _______, _______
 ),
 
