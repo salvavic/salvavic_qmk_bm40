@@ -85,7 +85,7 @@ void rgb_matrix_indicators_user(void) {
     }
 
     if(IS_LAYER_ON(_COLEMAK)) {
-        rgb_matrix_set_color_all(50, 10, 20);
+        rgb_matrix_set_color_all(50, 15.6, 0);
     }
 
     //layer indicators
@@ -144,7 +144,6 @@ void rgb_matrix_indicators_user(void) {
     }
 
     //capslock leds
-
     if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
         rgb_matrix_set_color_all(50, 15.6, 0);
     }
@@ -194,9 +193,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_COLEMAK] = LAYOUT_planck_mit(
     KC_ESC,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,    KC_BSPC,
-    KC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
-    KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBO,   FNDEL, NUMERIC, KC_RALT,   KC_LGUI
+    KC_TAB,  HOMEQ_A,    HOMEQ_R,    HOMEQ_S,    HOMEQ_T,    KC_D,    KC_H,    HOMEQ_N,    HOMEQ_E,    HOMEQ_I,    HOMEQ_O, KC_QUOT,
+    TDMAY, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    TD(TD_PC), KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
+    KC_LCTL, KC_LALT, NUMERIC, FN, SIMBO,   KC_SPC,  SIMBOENT,   FNDEL, NUMERIC, KC_RALT,   KC_LGUI
 ),
 
 /* SIMBOLOS
@@ -288,7 +287,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case COLEMA:
             if (record->event.pressed) {
-                rgb_matrix_set_color_all(50, 10, 20);
+                // rgb_matrix_set_color_all(50, 10, 20);
+                        rgb_matrix_set_color_all(50, 15.6, 0);
                 set_single_persistent_default_layer(_COLEMAK);
             }
             return false;
