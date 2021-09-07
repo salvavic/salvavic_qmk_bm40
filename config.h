@@ -4,28 +4,33 @@
 
 #undef TAPPING_TERM
 #define TAPPING_TERM 150
-#define TAPPING_TERM_PER_KEY
 #define LONG_TAPPING_TERM 50
+#define TAPPING_TERM_PER_KEY
 
 #define PERMISSIVE_HOLD_PER_KEY
-
 #define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
-
 #define TAPPING_FORCE_HOLD_PER_KEY
-
 #define RETRO_TAPPING_PER_KEY
 
 #undef TAPPING_TOGGLE
 #define TAPPING_TOGGLE 2
 
 ///////////////////////////////////
-///////////////////////////////////
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
 #define RGBLIGHT_ANIMATIONS
-#undef RGBLIGHT_LIMIT_VAL
-#define RGBLIGHT_LIMIT_VAL 10
+
+//#define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+//#define RGBLIGHT_LIMIT_VAL 10
+
+//bootmagic
+#define BOOTMAGIC_KEY_SALT KC_V
+#define BOOTMAGIC_KEY_EEPROM_CLEAR KC_Q
+
 #ifdef RGB_MATRIX_ENABLE
+
+//--------------------------------------------------------------------------------------------------------
+
 //disable broken animations
 #define DISABLE_RGB_MATRIX_ALPHAS_MODS
 #define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN
@@ -63,6 +68,9 @@
 //#define DISABLE_RGB_MATRIX_MULTISPLASH
 //#define DISABLE_RGB_MATRIX_SOLID_SPLASH
 //#define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
+
 #undef RGB_MATRIX_STARTUP_MODE
+
 #define RGBLIGHT_HUE_STEP 20
+
 #endif
