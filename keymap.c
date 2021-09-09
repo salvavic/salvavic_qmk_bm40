@@ -77,77 +77,72 @@ enum {
 #define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
 #define BP_NDSH_MAC ALGR(KC_8)
 
-//layer led colors
-// void rgb_matrix_indicators_user(void) {
-//     if(IS_LAYER_ON(_QWERTY)) {
-//         rgb_matrix_set_color(11, 0, 40, 50);
-//     }
+void rgb_matrix_indicators_user(void) {
 
-//     if(IS_LAYER_ON(_COLEMAK)) {
-//         rgb_matrix_set_color_all(50, 15.6, 0);
-//     }
+	switch (get_highest_layer(layer_state)) {
+		case _QWERTY:
+			rgb_matrix_set_color(11, 0, 40, 50);
+			break;
+		case _COLEMAK:
+			// rgb_matrix_set_color(11, 50, 0, 0);
+            rgb_matrix_set_color_all(50, 0, 50);
+			break;
+		case _NUMERICO:
+            rgb_matrix_set_color(38, 0, 40, 50);
 
-//     //layer indicators
+            rgb_matrix_set_color(7, 0, 40, 50);
+            rgb_matrix_set_color(8, 0, 40, 50);
+            rgb_matrix_set_color(9, 0, 40, 50);
+            rgb_matrix_set_color(10, 0, 40, 50);
 
-//     if(IS_LAYER_ON(_NUMERICO)) {
-//         rgb_matrix_set_color(38, 0, 40, 50);
+            rgb_matrix_set_color(19, 0, 40, 50);
+            rgb_matrix_set_color(20, 0, 40, 50);
+            rgb_matrix_set_color(21, 0, 40, 50);
+            rgb_matrix_set_color(22, 0, 40, 50);
 
-//         rgb_matrix_set_color(7, 0, 40, 50);
-//         rgb_matrix_set_color(8, 0, 40, 50);
-//         rgb_matrix_set_color(9, 0, 40, 50);
-//         rgb_matrix_set_color(10, 0, 40, 50);
+            rgb_matrix_set_color(31, 0, 40, 50);
+            rgb_matrix_set_color(32, 0, 40, 50);
+            rgb_matrix_set_color(33, 0, 40, 50);
+            rgb_matrix_set_color(34, 0, 40, 50);
 
-//         rgb_matrix_set_color(19, 0, 40, 50);
-//         rgb_matrix_set_color(20, 0, 40, 50);
-//         rgb_matrix_set_color(21, 0, 40, 50);
-//         rgb_matrix_set_color(22, 0, 40, 50);
+            rgb_matrix_set_color(43, 0, 40, 50);
+            rgb_matrix_set_color(42, 0, 40, 50);
+            rgb_matrix_set_color(44, 0, 40, 50);
+            rgb_matrix_set_color(45, 0, 40, 50);
 
-//         rgb_matrix_set_color(31, 0, 40, 50);
-//         rgb_matrix_set_color(32, 0, 40, 50);
-//         rgb_matrix_set_color(33, 0, 40, 50);
-//         rgb_matrix_set_color(34, 0, 40, 50);
+            rgb_matrix_set_color(52, 0, 40, 50);
+            rgb_matrix_set_color(53, 0, 40, 50);
+            rgb_matrix_set_color(54, 0, 40, 50);
+            rgb_matrix_set_color(55, 0, 40, 50);
+			break;
+		case _ADJUST:
+            rgb_matrix_set_color(39, 50, 10, 20);
+            rgb_matrix_set_color(19, 50, 10, 20);
+            rgb_matrix_set_color(22, 50, 10, 20);
+            rgb_matrix_set_color(42, 50, 10, 20);
+			break;
+		case _FN:
+            rgb_matrix_set_color(39, 50, 0, 0);
 
-//         rgb_matrix_set_color(43, 0, 40, 50);
-//         rgb_matrix_set_color(42, 0, 40, 50);
-//         rgb_matrix_set_color(44, 0, 40, 50);
-//         rgb_matrix_set_color(45, 0, 40, 50);
+            rgb_matrix_set_color(20, 50, 0, 0);
+            rgb_matrix_set_color(31, 50, 0, 0);
+            rgb_matrix_set_color(32, 50, 0, 0);
+            rgb_matrix_set_color(33, 50, 0, 0);
 
-//         rgb_matrix_set_color(52, 0, 40, 50);
-//         rgb_matrix_set_color(53, 0, 40, 50);
-//         rgb_matrix_set_color(54, 0, 40, 50);
-//         rgb_matrix_set_color(55, 0, 40, 50);
-//     }
+            rgb_matrix_set_color(42, 50, 0, 0);
+            rgb_matrix_set_color(43, 50, 0, 0);
+            rgb_matrix_set_color(44, 50, 0, 0);
+			break;
+		case _SIMBOLOS:
+            rgb_matrix_set_color_all(10, 0, 50);
+			break;
+	}
 
-//     if(IS_LAYER_ON(_ADJUST)) {
-//         rgb_matrix_set_color(39, 50, 10, 20);
-//         rgb_matrix_set_color(19, 50, 10, 20);
-//         rgb_matrix_set_color(22, 50, 10, 20);
-//         rgb_matrix_set_color(42, 50, 10, 20);
-//     }
+        if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+            rgb_matrix_set_color_all(50, 15.6, 0);
+        }
 
-//     if(IS_LAYER_ON(_FN)) {
-//         rgb_matrix_set_color(39, 50, 0, 0);
-
-//         rgb_matrix_set_color(20, 50, 0, 0);
-//         rgb_matrix_set_color(31, 50, 0, 0);
-//         rgb_matrix_set_color(32, 50, 0, 0);
-//         rgb_matrix_set_color(33, 50, 0, 0);
-
-//         rgb_matrix_set_color(42, 50, 0, 0);
-//         rgb_matrix_set_color(43, 50, 0, 0);
-//         rgb_matrix_set_color(44, 50, 0, 0);
-//     }
-
-//     if(IS_LAYER_ON(_SIMBOLOS)) {
-//         rgb_matrix_set_color_all(10, 0, 50);
-//     }
-
-//     //capslock leds
-//     if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-//         rgb_matrix_set_color_all(50, 15.6, 0);
-//     }
-
-// }
+}
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_PC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, S(KC_COMM)),
