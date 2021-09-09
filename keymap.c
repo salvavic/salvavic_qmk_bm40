@@ -214,7 +214,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | CatP |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      │      | CF4  |INSERT|      |   ↑  |PGDOWN| PGUP | F12  |
+ * | APP  |      |      |      │      | CF4  |INSERT|      |   ↑  |PGDOWN| PGUP | F12  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | REDO │ UNDO │ C C  │ C V  │  C C | HOME │   ←  │   ↓  │   →  │  END |PrintS|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_FN] = LAYOUT_planck_mit(
     SGUI(KC_S),  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
-    _______,  _______, _______, _______ , _______, M_CF4,   KC_INS, XXXXXXX, KC_UP, KC_PGDN, KC_PGUP,  KC_F12,
+    KC_APP,  _______, _______, _______ , _______, M_CF4,   KC_INS, XXXXXXX, KC_UP, KC_PGDN, KC_PGUP,  KC_F12,
     _______,  REDO, UNDO, CUT, PASTE, COPY,  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, KC_PSCR,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, SGUI(KC_S)
 ),
