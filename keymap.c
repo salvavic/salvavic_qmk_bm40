@@ -84,8 +84,7 @@ void rgb_matrix_indicators_user(void) {
 			rgb_matrix_set_color(11, 0, 40, 50);
 			break;
 		case _COLEMAK:
-			// rgb_matrix_set_color(11, 50, 0, 0);
-            rgb_matrix_set_color_all(50, 0, 50);
+            rgb_matrix_set_color_all(50, 10, 20);
 			break;
 		case _NUMERICO:
             rgb_matrix_set_color(38, 0, 40, 50);
@@ -116,10 +115,7 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(55, 0, 40, 50);
 			break;
 		case _ADJUST:
-            rgb_matrix_set_color(39, 50, 10, 20);
-            rgb_matrix_set_color(19, 50, 10, 20);
-            rgb_matrix_set_color(22, 50, 10, 20);
-            rgb_matrix_set_color(42, 50, 10, 20);
+            rgb_matrix_set_color_all(50, 10, 20);
 			break;
 		case _FN:
             rgb_matrix_set_color(39, 50, 0, 0);
@@ -260,7 +256,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_planck_mit(
     _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
     _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, QWERTY,
-    _______, _______, _______, _______, _______, _______, _______, _______,  KC_VOLU,  KC_VOLD, _______, COLEMA,
+    _______, _______, _______, _______, _______, _______, _______, _______,  KC_VOLD,  KC_VOLU, _______, COLEMA,
     RGB_TOG, _______, _______, _______, _______, _______, _______, KC_MPRV,  KC_MNXT, KC_MPLY, KC_MUTE
 )
 
