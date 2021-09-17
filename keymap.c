@@ -25,6 +25,7 @@ enum keycodes {
     TDPC,
     TDALT,
     TDMAY,
+    MCO,MCOD, // Comentarios en visual studio
 };
 
 enum {
@@ -225,7 +226,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* Numerica
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |   7  |   8  |   9  |   -  | HOME |
+ * |      | MCO  | MCOD |      |      |      |      |   7  |   8  |   9  |   -  | HOME |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |   4  |   5  |   6  |   +  |  END |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -235,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_NUMERICO] = LAYOUT_planck_mit(
-    _______, _______, _______, _______, _______, _______, _______, KC_7, KC_8, KC_9, KC_KP_PLUS,  KC_HOME,
+    _______, MCO, MCOD, _______, _______, _______, _______, KC_7, KC_8, KC_9, KC_KP_PLUS,  KC_HOME,
     _______, _______, _______, _______, _______, _______, _______, KC_4, KC_5, KC_6, KC_KP_MINUS, KC_END,
     _______, _______, _______, _______, _______, _______, _______, KC_1, KC_2, KC_3, KC_KP_EQUAL, KC_PGUP,
     _______, _______, _______, _______, _______, _______, KC_0, KC_DOT, KC_ENT, _______, KC_PGDN
@@ -266,27 +267,28 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _SIMBOLOS, _FN, _ADJUST);
 }
 
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     switch (keycode) {
-//         case QWERTY:
-//             if (record->event.pressed) {
-//                 rgb_matrix_set_color_all(10, 0, 50);
-//                 set_single_persistent_default_layer(_QWERTY);
-//             }
-//             return false;
-//             break;
-//         case COLEMA:
-//             if (record->event.pressed) {
-//                 // rgb_matrix_set_color_all(50, 10, 20);
-//                         rgb_matrix_set_color_all(50, 15.6, 0);
-//                 set_single_persistent_default_layer(_COLEMAK);
-//             }
-//             return false;
-//             break;
-//     }
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MCO:
+            if (record->event.pressed) {
+                // when keycode MCOMENT is pressed
+                SEND_STRING(SS_DOWN(X_LCTL)"kc");
+            } else {
+                // when keycode MCOMENT is released
+            }
+            break;
+        case MCOD:
+            if (record->event.pressed) {
+                // when keycode MCOMENT is pressed
+                SEND_STRING(SS_DOWN(X_LCTL)"ku");
+            } else {
+                // when keycode MCOMENT is released
+            }
+            break;
+    }
 
-//     return true;
-// }
+    return true;
+}
 
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
