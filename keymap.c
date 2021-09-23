@@ -292,21 +292,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LGUI_T(KC_A):
+        case HOME_A:
             return true;
-        case LALT_T(KC_S):
+        case HOME_S:
             return true;
-        case LCTL_T(KC_D):
+        case HOME_D:
             return true;
-        case LSFT_T(KC_F):
+        case HOME_F:
             return true;
-        case RSFT_T(KC_J):
+        case HOME_J:
             return true;
-        case RCTL_T(KC_K):
+        case HOME_K:
             return true;
-        case RALT_T(KC_L):
+        case HOME_L:
             return true;
-        case LGUI_T(KC_SCLN):
+        case HOME_NT:
             return true;
 
         case LALT_T(KC_R):
