@@ -331,21 +331,21 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
 
 bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LGUI_T(KC_A):
+        case HOME_A:
             return true;
-        case LALT_T(KC_S):
+        case HOME_S:
             return true;
-        case LCTL_T(KC_D):
+        case HOME_D:
             return true;
-        case LSFT_T(KC_F):
+        case HOME_F:
             return true;
-        case RSFT_T(KC_J):
+        case HOME_J:
             return true;
-        case RCTL_T(KC_K):
+        case HOME_K:
             return true;
-        case RALT_T(KC_L):
+        case HOME_L:
             return true;
-        case LGUI_T(KC_SCLN):
+        case HOME_NT:
             return true;
 
         case LALT_T(KC_R):
@@ -370,21 +370,21 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 
 bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LGUI_T(KC_A):
+        case HOME_A:
             return true;
-        case LALT_T(KC_S):
+        case HOME_S:
             return true;
-        case LCTL_T(KC_D):
+        case HOME_D:
             return true;
-        case LSFT_T(KC_F):
+        case HOME_F:
             return true;
-        case RSFT_T(KC_J):
+        case HOME_J:
             return true;
-        case RCTL_T(KC_K):
+        case HOME_K:
             return true;
-        case RALT_T(KC_L):
+        case HOME_L:
             return true;
-        case LGUI_T(KC_SCLN):
+        case HOME_NT:
             return true;
 
         case LALT_T(KC_R):
@@ -410,21 +410,21 @@ bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LGUI_T(KC_A):
+        case HOME_A:
             return TAPPING_TERM + LONG_TAPPING_TERM;
-        case LALT_T(KC_S):
+        case HOME_S:
             return TAPPING_TERM + LONG_TAPPING_TERM;
-        case LCTL_T(KC_D):
+        case HOME_D:
             return TAPPING_TERM + LONG_TAPPING_TERM;
-        case LSFT_T(KC_F):
+        case HOME_F:
             return TAPPING_TERM + LONG_TAPPING_TERM;
-        case RSFT_T(KC_J):
+        case HOME_J:
             return TAPPING_TERM + LONG_TAPPING_TERM;
-        case RCTL_T(KC_K):
+        case HOME_K:
             return TAPPING_TERM + LONG_TAPPING_TERM;
-        case RALT_T(KC_L):
+        case HOME_L:
             return TAPPING_TERM + LONG_TAPPING_TERM;
-        case LGUI_T(KC_SCLN):
+        case HOME_NT:
             return TAPPING_TERM + LONG_TAPPING_TERM;
 
         case LALT_T(KC_R):
