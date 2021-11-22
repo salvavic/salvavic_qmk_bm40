@@ -36,12 +36,12 @@ enum {
 
 #define QWERTY DF(_QWERTY)
 #define COLEMA DF(_COLEMAK)
-#define FN TT(_FN)
+#define FN MO(_FN)
 #define FNDEL LT(_FN, KC_DEL)
-#define SIMBO TT(_SIMBOLOS)
+#define SIMBO MO(_SIMBOLOS)
 #define SIMBOENT LT(_SIMBOLOS, KC_ENTER)
-#define MOUSE TT(_MOUSE)
-#define NUMERIC TT(_NUMERICO)
+#define MOUSE MO(_MOUSE)
+#define NUMERIC MO(_NUMERICO)
 
 // COLEMAK - home row mods
 #define HOMEQ_A LGUI_T(KC_A)
@@ -188,7 +188,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TDMAY, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    TD(TD_PC), KC_DOT,  KC_SLSH, RSFT_T(KC_ENT),
     KC_LCTL, LALT_T(KC_LGUI), NUMERIC, FN, SIMBO,   KC_SPC,  SIMBOENT,   FNDEL, NUMERIC, KC_RALT,   KC_LGUI
 ),
-
 /* SIMBOLOS
  * ,-----------------------------------------------------------------------------------.
  * |      |   =  │   *  │   +  │   @  │   \  |   €  │   $  │   [  │  ]   │  º   |      |
