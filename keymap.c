@@ -192,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |   =  │   *  │   +  │   @  │   \  |   €  │   $  │   [  │  ]   │  º   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |   "  │   '  │   /  │   &  │   |  |   ¡  │   !  │   (  │  )   │  '   |      |
+ * |      |   "  │   '  │   /  │   &  │   |  |   ¡  │   !  │   (  │  )   │  '   |  ^   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |  <   │  >   │   %  │   -  │   #  |   ¿  │   ?  │   {  │  }   │  `   |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -201,7 +201,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_SIMBOLOS] = LAYOUT_planck_mit(
     _______, ES_EQL, ES_ASTR, ES_PLUS, ES_AT, ES_BSLS, ES_EURO, S(KC_4), ES_LBRC, ES_RBRC, ES_MORD, KC_DEL,
-    _______, S(KC_2), ES_QUOT, ES_SLSH, ES_AMPR, ES_PIPE, ES_IEXL, ES_EXLM, ES_LPRN, ES_RPRN, KC_MINS, _______,
+    _______, S(KC_2), ES_QUOT, ES_SLSH, ES_AMPR, ES_PIPE, ES_IEXL, ES_EXLM, ES_LPRN, ES_RPRN, KC_MINS,  S(KC_LBRC),
     _______, ES_LABK, ES_RABK, S(KC_5), KC_SLSH, ES_HASH, ES_IQUE, ES_QUES, ES_LCBR, ES_RCBR, KC_LBRC,  _______,
     _______, _______, _______, _______, _______, _______, _______,    _______,    _______, _______, _______
 ),
