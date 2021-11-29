@@ -151,6 +151,16 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define TDALT TD(TD_ALT)
 #define TDMAY TD(TD_MAY)
 
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPACE, KC_DELETE);
+const key_override_t bspace_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DELETE, KC_BSPACE);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &delete_key_override,
+    &delete_key_override,
+    NULL // Null terminate the array of overrides!
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
