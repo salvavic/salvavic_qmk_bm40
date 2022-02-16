@@ -71,34 +71,33 @@ void rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color_all(50, 10, 20);
 			break;
 		case _NUMERICO:
-            rgb_matrix_set_color_all(0, 40, 50);
+            // rgb_matrix_set_color_all(0, 40, 50);
 
-            // rgb_matrix_set_color(38, 0, 40, 50);
+            rgb_matrix_set_color(38, 0, 40, 50);
+            rgb_matrix_set_color(7, 0, 40, 50);
+            rgb_matrix_set_color(8, 0, 40, 50);
+            rgb_matrix_set_color(9, 0, 40, 50);
+            rgb_matrix_set_color(10, 0, 40, 50);
 
-            // rgb_matrix_set_color(7, 0, 40, 50);
-            // rgb_matrix_set_color(8, 0, 40, 50);
-            // rgb_matrix_set_color(9, 0, 40, 50);
-            // rgb_matrix_set_color(10, 0, 40, 50);
+            rgb_matrix_set_color(19, 0, 40, 50);
+            rgb_matrix_set_color(20, 0, 40, 50);
+            rgb_matrix_set_color(21, 0, 40, 50);
+            rgb_matrix_set_color(22, 0, 40, 50);
 
-            // rgb_matrix_set_color(19, 0, 40, 50);
-            // rgb_matrix_set_color(20, 0, 40, 50);
-            // rgb_matrix_set_color(21, 0, 40, 50);
-            // rgb_matrix_set_color(22, 0, 40, 50);
+            rgb_matrix_set_color(31, 0, 40, 50);
+            rgb_matrix_set_color(32, 0, 40, 50);
+            rgb_matrix_set_color(33, 0, 40, 50);
+            rgb_matrix_set_color(34, 0, 40, 50);
 
-            // rgb_matrix_set_color(31, 0, 40, 50);
-            // rgb_matrix_set_color(32, 0, 40, 50);
-            // rgb_matrix_set_color(33, 0, 40, 50);
-            // rgb_matrix_set_color(34, 0, 40, 50);
+            rgb_matrix_set_color(43, 0, 40, 50);
+            rgb_matrix_set_color(42, 0, 40, 50);
+            rgb_matrix_set_color(44, 0, 40, 50);
+            rgb_matrix_set_color(45, 0, 40, 50);
 
-            // rgb_matrix_set_color(43, 0, 40, 50);
-            // rgb_matrix_set_color(42, 0, 40, 50);
-            // rgb_matrix_set_color(44, 0, 40, 50);
-            // rgb_matrix_set_color(45, 0, 40, 50);
-
-            // rgb_matrix_set_color(52, 0, 40, 50);
-            // rgb_matrix_set_color(53, 0, 40, 50);
-            // rgb_matrix_set_color(54, 0, 40, 50);
-            // rgb_matrix_set_color(55, 0, 40, 50);
+            rgb_matrix_set_color(52, 0, 40, 50);
+            rgb_matrix_set_color(53, 0, 40, 50);
+            rgb_matrix_set_color(54, 0, 40, 50);
+            rgb_matrix_set_color(55, 0, 40, 50);
 			break;
 		case _ADJUST:
             rgb_matrix_set_color_all(50, 10, 20);
@@ -246,7 +245,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_planck_mit(
     _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
-    _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______, QWERTY,
+    _______, TT(_NUMERICO), _______, _______, _______, _______, _______, _______,  _______,  _______, _______, QWERTY,
     _______, _______, _______, _______, _______, _______, _______, _______,  KC_VOLD,  KC_VOLU, _______, COLEMA,
     RGB_TOG, _______, _______, _______, _______, _______, _______, KC_MPRV,  KC_MNXT, KC_MPLY, KC_MUTE
 )
