@@ -204,14 +204,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | C(Y) │ C(Z) │ C C  │ C V  │  C C | HOME │   ←  │   ↓  │   →  │  END |PrintS|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      |      |      |CaturP|
+ * |      |      | Bksp |      |      |             |      |      |      |      |CaturP|
  * `-----------------------------------------------------------------------------------'
  */
 [_FN] = LAYOUT_planck_mit(
     SGUI(KC_S),  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
     KC_APP,  _______, _______, _______ , _______, LCTL(KC_F4),   KC_INS, XXXXXXX, KC_UP, KC_PGUP, KC_PGDN,  KC_F12,
     _______,  LCTL(KC_Y), LCTL(KC_Z), LCTL(KC_X), LCTL(KC_V), LCTL(KC_C),  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, KC_PSCR,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, SGUI(KC_S)
+    _______, _______, KC_BSPC, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, SGUI(KC_S)
 ),
 /* Numerica
  * ,-----------------------------------------------------------------------------------.
