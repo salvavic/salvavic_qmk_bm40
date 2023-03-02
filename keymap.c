@@ -125,7 +125,7 @@ void rgb_matrix_indicators_user(void) {
 
 }
 
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t  tap_dance_actions[] = {
   [TD_PC] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, S(KC_COMM)),
   [TD_MAY] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
 };
@@ -246,7 +246,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_mit(
-    _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
+    _______, QK_BOOT, DB_TOGG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,  RGB_VAI, RGB_VAD, KC_DEL ,
     _______, TT(_NUMERICO), _______, _______, _______, _______, _______, _______,  _______,  _______, _______, QWERTY,
     _______, _______, _______, _______, _______, _______, _______, _______,  KC_VOLD,  KC_VOLU, _______, COLEMA,
     RGB_TOG, _______, _______, _______, _______, _______, _______, KC_MPRV,  KC_MNXT, KC_MPLY, KC_MUTE
