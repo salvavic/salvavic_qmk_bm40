@@ -61,7 +61,7 @@ enum {
 
 #define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
 
-void rgb_matrix_indicators_user(void) {
+bool rgb_matrix_indicators_user(void) {
 
 	switch (get_highest_layer(layer_state)) {
 		case _QWERTY:
@@ -122,7 +122,7 @@ void rgb_matrix_indicators_user(void) {
         if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
             rgb_matrix_set_color_all(50, 15.6, 0);
         }
-
+	return false;
 }
 
 tap_dance_action_t  tap_dance_actions[] = {
@@ -131,8 +131,8 @@ tap_dance_action_t  tap_dance_actions[] = {
 };
 
 
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPACE, KC_DELETE);
-const key_override_t bspace_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DELETE, KC_BSPACE);
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DELETE);
+const key_override_t bspace_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DELETE, KC_BSPC);
 
 // // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
