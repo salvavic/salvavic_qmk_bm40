@@ -1,0 +1,34 @@
+name: Build QMK
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          apt-get -y install git gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi build-essential dfu-util
+
+      - name: Clone QMK firmware repository
+        run: |
+          git clone https://github.com/qmk/qmk_firmware.git
+          cd qmk_firmware
+          git submodule add https://github.com/salvavic/salvavic_qmk_bm40 keyboards/kprepublic/bm40hsrgb/keymaps/salvavic
+          git submodule update --init --recursive
+
+      - name: Build firmware
+        run: |
+          cd qmk_firmware
+          make kprepublic/bm40hsrgb:salvavic
+
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware_bin
+          path: qmk_firmware/.build/crkbd_rev1_salvavic.hex
