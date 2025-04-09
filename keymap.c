@@ -209,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | APP  |      |      |      │      | CF4  |INSERT|      |   ↑  |PGDOWN| PGUP | F12  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | C(Y) │ C(Z) │ C C  │ C V  │  C C | HOME │   ←  │   ↓  │   →  │  END |PrintS|
+ * |      |      │GC(L) │GC(R) │      │      | HOME │   ←  │   ↓  │   →  │  END |PrintS|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      | Bksp |      |      |             |      |      |      |      |CaturP|
  * `-----------------------------------------------------------------------------------'
@@ -217,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FN] = LAYOUT_planck_mit(
     SGUI(KC_S),  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_F6,  KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_F11,
     KC_APP,  _______, _______, _______ , _______, LCTL(KC_F4),   KC_INS, XXXXXXX, KC_UP, KC_PGUP, KC_PGDN,  KC_F12,
-    SGUI(KC_TAB),  LCTL(KC_Y), G(C(KC_LEFT)), G(C(KC_RIGHT)), LCTL(KC_V), LCTL(KC_C),  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, KC_PSCR,
+    G(KC_TAB), _______, G(C(KC_LEFT)), G(C(KC_RIGHT)), _______, _______,  KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END, KC_PSCR,
     _______, _______, KC_BSPC, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, SGUI(KC_S)
 ),
 /* Numerica
