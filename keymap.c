@@ -119,10 +119,13 @@ bool rgb_matrix_indicators_user(void) {
 			break;
 	}
 
-        if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-            rgb_matrix_set_color_all(50, 15.6, 0);
-        }
-	return false;
+  led_t led_state = host_keyboard_led_state();
+  if (led_state.caps_lock) {
+    rgb_matrix_set_color_all(50, 15.6, 0);
+
+  }
+  
+  return false;
 }
 
 tap_dance_action_t  tap_dance_actions[] = {
