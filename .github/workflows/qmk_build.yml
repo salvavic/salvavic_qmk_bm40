@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: firmware_bin
-          path: qmk_firmware/.build/crkbd_rev1_salvavic.hex
+          path: qmk_firmware/.build/kprepublic_bm40hsrgb_rev1_salvavic.hex
