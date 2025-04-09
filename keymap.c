@@ -124,7 +124,7 @@ bool rgb_matrix_indicators_user(void) {
     rgb_matrix_set_color_all(50, 15.6, 0);
 
   }
-  
+
   return false;
 }
 
@@ -134,6 +134,7 @@ tap_dance_action_t  tap_dance_actions[] = {
 };
 
 
+/*
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DELETE);
 const key_override_t bspace_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_DELETE, KC_BSPC);
 
@@ -143,6 +144,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     &bspace_key_override,
     NULL // Null terminate the array of overrides!
 };
+*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 

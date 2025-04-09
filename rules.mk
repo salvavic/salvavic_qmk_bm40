@@ -1,3 +1,4 @@
+
 MOUSEKEY_ENABLE = no # Mouse keys
 COMMAND_ENABLE =no
 # BOOTMAGIC_ENABLE = yes
@@ -5,7 +6,7 @@ EXTRAKEY_ENABLE = yes # Audio control and System control
 TAP_DANCE_ENABLE = yes
 CONSOLE_ENABLE=no
 AUDIO_ENABLE=no
- KEY_OVERRIDE_ENABLE = yes
+# KEY_OVERRIDE_ENABLE = yes
 # RGB_MATRIX_ENABLE = yes
 # RGBLIGHT_ENABLE = yes
 #  AUTO_SHIFT_ENABLE = yes # Auto Shift
