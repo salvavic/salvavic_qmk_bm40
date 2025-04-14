@@ -19,13 +19,13 @@ jobs:
         run: |
           git clone https://github.com/qmk/qmk_firmware.git
           cd qmk_firmware
-          git submodule add https://github.com/salvavic/salvavic_qmk_bm40 keyboards/kprepublic/bm40hsrgb/keymaps/salvavic
+          git submodule add https://github.com/salvavic/salvavic_qmk_bm40 keyboards/kprepublic/bm40hsrgb/rev1/keymaps/salvavic
           git submodule update --init --recursive
 
       - name: Build firmware
         run: |
           cd qmk_firmware
-          make kprepublic/bm40hsrgb:salvavic
+          make kprepublic/bm40hsrgb/rev1:salvavic
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
