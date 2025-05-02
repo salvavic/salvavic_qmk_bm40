@@ -36,9 +36,4 @@ jobs:
         with:
           name: firmware_bin
           path: qmk_firmware/.build/kprepublic_bm40hsrgb_rev2_salvavic.hex
-
-     - name: Upload firmware artifacts 2
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware_bin
           path: qmk_firmware/.build/kprepublic_bm40hsrgb_rev2_vial.hex
