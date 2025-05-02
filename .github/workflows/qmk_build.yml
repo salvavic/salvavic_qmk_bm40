@@ -26,9 +26,19 @@ jobs:
         run: |
           cd qmk_firmware
           make kprepublic/bm40hsrgb/rev2:salvavic
+      - name: Build vial firmware
+        run: |
+          cd qmk_firmware
+          make kprepublic/bm40hsrgb/rev2:vial
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
           name: firmware_bin
-          path: qmk_firmware/.build/kprepublic_bm40hsrgb_rev1_salvavic.hex
+          path: qmk_firmware/.build/kprepublic_bm40hsrgb_rev2_salvavic.hex
+
+     - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware_bin
+          path: qmk_firmware/.build/kprepublic_bm40hsrgb_rev2_vial.hex
